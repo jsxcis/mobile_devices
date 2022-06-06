@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="primary">
+      <ion-button slot="end" (click)="navigateToWelcomePage()">Return</ion-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="center-padding">
+    <app-logo></app-logo>
+      <h1>Sign In</h1>
+  </div>
+  <form>
+  <ion-list>
+      <ion-item>
+        <ion-label position="stacked">User ID</ion-label>
+        <ion-input autocomplete="off" name = "userID" type='text' [(ngModel)]="postData.userID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input autocomplete="off" name = "password" type='password' [(ngModel)]="postData.password"></ion-input>
+      </ion-item>
+      <ion-item lines='none'>
+        <!-- <Need an account? <a routerLink='/signup'>Create Account</a> //Commented out-->
+      </ion-item>
+      <section>
+        <ion-button expand="block" shape='round' color='success' (click)="loginAction()">Sign In</ion-button>
+      </section>
+  </ion-list>
+  </form>
+</ion-content>

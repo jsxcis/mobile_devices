@@ -1,0 +1,44 @@
+//.textRow{
+//    border: solid 1px #ddd;
+//}
+.textCol{
+    padding-top: 10px;
+    font-size: small;
+    font-weight: bold;
+}
+.buttonCol{
+    font-size: small;
+}
+.detailsArea {
+    height:30px;
+    width:100%;
+    background: #beb8b8;
+    font-size: medium;
+    text-align: center;
+    padding-top: 6px;
+}
+.listHeader {
+    height:30px;
+    width: 100%;
+    background: #beb8b8;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 6px;
+}
+.listFiller {
+    height:30px;
+    width: 100%;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 6px;
+}
+.listArea {
+    font-size: medium;
+}
+.dataDisplayArea {
+    --overflow: var(--myvar);
+    font-size: medium;
+    scroll-snap-align: start;
+}

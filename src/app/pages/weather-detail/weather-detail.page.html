@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="deviceList()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Weather Station</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Name:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceName }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Temperature:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ temperature }} &#x2103;</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Humidity:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ humidity }} %</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+      <ion-col>
+        <div><ion-label>Pressure:</ion-label></div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div><ion-label>{{ pressure }} mb</ion-label></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div><ion-label>Windspeed:</ion-label></div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div><ion-label>{{ windSpeed }} kts</ion-label></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div><ion-label>Direction:</ion-label></div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div><ion-label>{{ direction }}</ion-label></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div><ion-label>Total Rain:</ion-label></div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div><ion-label>{{ rainTotalMM }} mm</ion-label></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div><ion-label>Rain per hour:</ion-label></div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div><ion-label>{{ rainMMPerHour }} mm</ion-label></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col>
+      <div><ion-label>Date:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceStatusDate }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+ <ion-item  color='medium'>
+  <ion-title class="ion-text-center">Details</ion-title>
+</ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Mode:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label [color]="deviceMode == 'Online' ? 'success' : 'danger'">{{ deviceMode }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device IP:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceIP }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LAT:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceLAT }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LONG:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceLONG }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Lora ID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ loraID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

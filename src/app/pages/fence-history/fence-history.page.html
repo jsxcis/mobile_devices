@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="history()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ deviceName }} History</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-grid>
+  <ion-row div class="textRow">
+    <ion-col >
+      <div class="textCol">
+      <ion-text>Today Average:</ion-text>
+    </div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div class="buttonCol">
+      <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayDaily()">
+        <ion-text color="dark">{{ fenceDailyAverage }} V</ion-text>
+      </ion-button>
+    </div>
+    </ion-col>
+  </ion-row>
+  <ion-row div class="textRow">
+    <ion-col>
+      <div class="textCol">
+        <ion-label>Weekly Average:</ion-label>
+      </div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div class="buttonCol">
+      <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayWeekly()">
+        <ion-text color="dark">{{ fenceWeeklyAverage }} V</ion-text>
+      </ion-button>
+    </div>
+    </ion-col>
+  </ion-row>
+  <ion-row div class="textRow">
+      <ion-col>
+        <div class="textCol">
+          <ion-label>Monthly Average:</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayMonthly()">
+          <ion-text color="dark">{{ fenceMonthlyAverage }} V</ion-text>
+        </ion-button>     </div>
+      </ion-col>
+    </ion-row>
+    <ion-row div class="textRow">
+      <ion-col>
+        <div class="textCol">
+          <ion-label>Quarterly Average:</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayQuarterly()">
+          <ion-text color="dark">{{ fenceQuarterlyAverage }} V</ion-text>
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+    <ion-row div class="textRow">
+      <ion-col>
+        <div class="textCol">
+          <ion-label>Yearly Average:</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayYearly()">
+          <ion-text color="dark">{{ fenceYearlyAverage }} V</ion-text>
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--
+    <ion-row div class="textRow">
+      <ion-col>
+        <div class="textCol">
+          <ion-label>All Time Average:</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayAllTime()">
+          <ion-text color="light">{{ fenceAllTimeAverage }} V</ion-text>
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+    -->
+  <div class="listFiller">
+    <ion-text></ion-text>
+  </div>
+ <div class="listHeader">
+  <ion-text>{{dataSwitch}} Data</ion-text>
+  </div>
+</ion-content> 
+<ion-content div class="dataDisplayArea">
+<ion-grid>
+  <ion-row>
+  <ion-col>
+    <ion-button  expand="block" strong=true size='small' fill="outline" (click)="displayList()">List</ion-button>
+  </ion-col>
+  <ion-col>
+    <ion-button  expand="block" strong=true size='small' fill="outline" (click)="displayGraph()">Graph</ion-button>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+<div *ngIf="displayMode == 'List'">
+<div class="listArea">
+<ion-list>
+<ion-item *ngFor="let item of fenceDailyHistory">
+  <div *ngIf="dataSwitch == 'Daily' else conditionFalse">
+    <ion-label [color]="item.averageLevel == '50' ? 'dark' : 'primary'">{{ item.levelTime }}</ion-label>
+  </div>
+  <ng-template #conditionFalse>
+    <ion-label [color]="item.averageLevel == '50' ? 'dark' : 'primary'">{{ item.levelDate }}</ion-label>
+  </ng-template>
+  <ion-label [color]="item.averageLevel == '50' ? 'dark' : 'primary'" class="ion-text-right">{{ item.averageLevel }} V</ion-label>
+</ion-item>
+</ion-list>
+</div>
+</div>
+<div *ngIf="displayMode == 'Graph'">
+  <google-chart [data]="columnChart"></google-chart>
+</div>
+</ion-content>

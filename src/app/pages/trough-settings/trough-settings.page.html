@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="deviceDetail()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ deviceName }} Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Device Identifier</ion-label>
+        <ion-input value = {{deviceID}} autocomplete="off" name = "deviceID" type='text' [(ngModel)]="deviceID" readonly></ion-input>
+      </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Device Name</ion-label>
+          <ion-input value = {{deviceName}} autocomplete="off" name = "deviceName" type='text' [(ngModel)]="deviceName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Device IP</ion-label>
+          <ion-input value = {{deviceIP}} autocomplete="off" name = "deviceIP" type='text' [(ngModel)]="deviceIP"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Lora ID</ion-label>
+          <ion-input value = {{loraID}} autocomplete="off" name = "loraID" type='number' [(ngModel)]="loraID"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Device Latitude</ion-label>
+          <ion-input inputmode="decimal" value = {{deviceLAT}} autocomplete="off" name = "deviceLAT" type='text' [(ngModel)]="deviceLAT"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Device Longitude</ion-label>
+          <ion-input inputmode="decimal" value = {{deviceLONG}} autocomplete="off" name = "deviceLONG" type='text' [(ngModel)]="deviceLONG"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Trough Overflow Height (mm)</ion-label>
+          <ion-input inputmode="numeric" value = {{troughOverFlowHeight}} autocomplete="off" name = "troughOverFlowHeight" type='number' [(ngModel)]="troughOverFlowHeight"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Trough Empty Height (mm)</ion-label>
+          <ion-input inputmode="numeric" value = {{troughEmptyHeight}} autocomplete="off" name = "troughEmptyHeight" type='number' [(ngModel)]="troughEmptyHeight"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Trough Full Height (mm)</ion-label>
+          <ion-input inputmode="numeric" value = {{troughFullHeight}} autocomplete="off" name = "troughFullHeight" type='number' [(ngModel)]="troughFullHeight"></ion-input>
+        </ion-item>
+        <section>
+          <ion-grid>
+            <ion-row>
+              <!--
+            <ion-col>
+              <ion-button  expand="block" strong=true size='small' fill="outline" (click)="resetValues()">Reset Values</ion-button>
+            </ion-col>
+            -->
+            <ion-col>
+              <ion-button  expand="block" strong=true size='small' fill="outline" (click)="saveSettings()">Save Settings</ion-button>
+            </ion-col>
+            </ion-row>
+           </ion-grid>
+        </section>
+    </ion-list>
+    </form>
+</ion-content>
+

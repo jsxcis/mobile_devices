@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="deviceList()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <ion-buttons slot="end">
+      <ion-button slot="end" (click)="deviceSettings()">
+        <ion-icon name="construct-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Fence</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Name:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceName }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence Status:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div>
+        <ion-label *ngIf="fenceStatus == 'ON'" color='success'>NOMINAL</ion-label>
+        <ion-label *ngIf="fenceStatus == 'LOW VOLTS'" color='warning'>{{ fenceStatus }}</ion-label>
+        <ion-label *ngIf="fenceStatus == 'OFF'" color='danger'>{{ fenceStatus }}</ion-label>
+        <ion-label *ngIf="fenceStatus == 'UNKNOWN'" color='danger'>{{ fenceStatus }}</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence Voltage:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ fenceVoltage }}KV</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Date:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceStatusDate }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+ <ion-item  color='medium'>
+  <ion-title class="ion-text-center">Details</ion-title>
+</ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Mode:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label [color]="deviceMode == 'Online' ? 'success' : 'danger'">{{ deviceMode }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device IP:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceIP }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LAT:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceLAT }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LONG:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceLONG }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Lora ID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ loraID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence Raw Value:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ fenceValue }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence Multiplier:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ fenceMultiplier }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence On Value:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ fenceOnValue }}V</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence Low Value:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ fenceLowValue }}V</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Fence Off Value:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ fenceOffValue }}V</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Battery:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceBattery }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Version:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceVersion }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device UID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceUID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+

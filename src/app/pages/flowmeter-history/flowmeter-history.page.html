@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="history()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ deviceName }} History</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row div class="textRow">
+      <ion-col >
+        <div class="textCol">
+        <ion-text>Daily Total:</ion-text>
+      </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayDaily()">
+          <ion-text color="dark">{{ flowDailyL }} L</ion-text>
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+    <ion-row div class="textRow">
+      <ion-col>
+        <div class="textCol">
+          <ion-label>Weekly Total:</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayWeekly()">
+          <ion-text color="dark">{{ weeklyTotal }} L</ion-text>
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+    <ion-row div class="textRow">
+        <ion-col>
+          <div class="textCol">
+            <ion-label>Monthly Total:</ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div class="buttonCol">
+          <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayMonthly()">
+            <ion-text color="dark">{{ monthlyTotal }} L</ion-text>
+          </ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-row div class="textRow">
+        <ion-col>
+          <div class="textCol">
+            <ion-label>Quarterly Total:</ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div class="buttonCol">
+          <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayQuarterly()">
+            <ion-text color="dark">{{ quarterlyTotal }} L</ion-text>
+          </ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-row div class="textRow">
+        <ion-col>
+          <div class="textCol">
+            <ion-label>Yearly Total:</ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div class="buttonCol">
+          <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayYearly()">
+            <ion-text color="dark">{{ yearlyTotal }} L</ion-text>
+          </ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+      <ion-row div class="textRow">
+        <ion-col>
+          <div class="textCol">
+            <ion-label>All Time Total:</ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div class="buttonCol">
+          <ion-button color="secondary" expand="full" fill="solid" size="small" (click)="displayAllTime()">
+            <ion-text color="dark">{{ allTimeTotal }} L</ion-text>
+          </ion-button>
+        </div>
+        </ion-col>
+      </ion-row>
+   </ion-grid>
+   <div class="listHeader">
+    <ion-text>{{dataSwitch}} Data</ion-text>
+    </div>
+</ion-content> 
+<ion-content div class="dataDisplayArea">
+  <ion-grid>
+    <ion-row>
+    <ion-col>
+      <ion-button  expand="block" strong=true size='small' fill="outline" (click)="displayList()">List</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button  expand="block" strong=true size='small' fill="outline" (click)="displayGraph()">Graph</ion-button>
+    </ion-col>
+    </ion-row>
+   </ion-grid>
+<div *ngIf="displayMode == 'List'">
+<div class="listArea">
+<ion-list>
+<ion-item *ngFor="let item of flowMeterDailyHistory">
+    <ion-label [color]="item.flowDailyL == '0.0' ? 'dark' : 'primary'">{{ item.flowDate }}</ion-label>
+    <ion-label [color]="item.flowDailyL == '0.0' ? 'dark' : 'primary'" class="ion-text-right">{{ item.flowDailyL }} L</ion-label>
+</ion-item>
+</ion-list>
+</div>
+</div>
+<div *ngIf="displayMode == 'Graph'">
+    <google-chart [data]="columnChart"></google-chart>
+</div>
+</ion-content>

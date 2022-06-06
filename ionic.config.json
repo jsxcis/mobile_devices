@@ -1,0 +1,8 @@
+{
+  "name": "xcis",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

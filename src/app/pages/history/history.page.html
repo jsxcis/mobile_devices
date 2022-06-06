@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title>
+      History
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item color='light'>
+    <ion-label class="ion-text-center">Tanks</ion-label>
+    </ion-item>
+      <ion-item *ngFor="let item of tanks">
+        <img src='assets/images/watertankicon.jpg' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-button (click)="showTankHistory(item.deviceID,item)" fill="outline">Level</ion-button>
+      </ion-item>
+       <!--
+    <ion-item color='light'>
+      <ion-label class="ion-text-center">Bores</ion-label>
+    </ion-item>
+      <ion-item  *ngFor="let item of bores">
+        <img src='assets/images/bore.jpg' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-button (click)="showBoreHistory(item.deviceID,item)" fill="outline">Flo</ion-button>
+          <ion-button (click)="showBoreHistory(item.deviceID,item)" fill="outline">Pwr</ion-button>
+          <ion-button (click)="showBoreHistory(item.deviceID,item)" fill="outline">Vol</ion-button>
+      </ion-item>
+      -->
+    <ion-item  color='light'>
+      <ion-label class="ion-text-center">Troughs</ion-label>
+    </ion-item>
+      <ion-item *ngFor="let item of troughs">
+        <img src='assets/images/trough.jpg' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-button (click)="showTroughHistory(item.deviceID,item)" fill="outline">Level</ion-button>
+      </ion-item>
+    <ion-item  color='light'>
+      <ion-label class="ion-text-center">Fences</ion-label>
+    </ion-item>
+      <ion-item *ngFor="let item of fences">
+        <img src='assets/images/electricfence.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-button (click)="showFenceHistory(item.deviceID,item)" fill="outline">Volts</ion-button>
+      </ion-item>
+      <!--
+    <ion-item  color='light'>
+      <ion-label class="ion-text-center">Weather Stations</ion-label>
+    </ion-item>
+      <ion-item *ngFor="let item of weatherStns">
+        <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label> {{ item.deviceName }}</ion-label>
+          <ion-button (click)="showWeatherStnHistory(item.deviceID,item)" fill="outline">Deg</ion-button>
+          <ion-button (click)="showWeatherStnHistory(item.deviceID,item)" fill="outline">Wnd</ion-button>
+          <ion-button (click)="showWeatherStnHistory(item.deviceID,item)" fill="outline">Hum</ion-button>
+          <ion-button (click)="showWeatherStnHistory(item.deviceID,item)" fill="outline">Bar</ion-button>
+      </ion-item>
+      -->
+    <ion-item  color='light'>
+      <ion-label class="ion-text-center">Rain Gauges</ion-label>
+    </ion-item>
+      <ion-item *ngFor="let item of rainGauges">
+        <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label> {{ item.deviceName }}</ion-label>
+          <ion-button (click)="showRainGaugeHistory(item.deviceID,item)" fill="outline">Totals</ion-button>
+      </ion-item>
+      <ion-item  color='light'>
+        <ion-label class="ion-text-center">Flow Meters</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let item of flowMeters">
+        <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label> {{ item.deviceName }}</ion-label>
+          <ion-button (click)="showFlowMeterHistory(item.deviceID,item)" fill="outline">Totals</ion-button>
+      </ion-item>
+  </ion-list>
+  </ion-content>
+
+  

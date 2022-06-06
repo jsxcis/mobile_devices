@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="deviceList()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <ion-buttons slot="end">
+      <ion-button slot="end" (click)="deviceSettings()">
+        <ion-icon name="construct-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Tank</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Name:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceName }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Level:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceLevel }}%</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Maximum Volme:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ totalVolume }}L</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Volume Above Reserve:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ availVolume }}L</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Depth Above Reserve:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ availDepth }}M</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Reserve Depth:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ reserveDepth }}M</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Reserve Volume:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ reserveVolume }}L</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Date:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceStatusDate }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+ <ion-item  color='medium'>
+  <ion-title class="ion-text-center">Details</ion-title>
+</ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Mode:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label [color]="deviceMode == 'Online' ? 'success' : 'danger'">{{ deviceMode }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device IP:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceIP }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LAT:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceLAT }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LONG:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceLONG }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Lora ID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ loraID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Battery:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceBattery }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Version:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceVersion }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device UID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceUID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

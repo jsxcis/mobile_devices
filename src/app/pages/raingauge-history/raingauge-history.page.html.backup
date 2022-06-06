@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title>{{ deviceName }} History</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!--
+  <div class = "detailsArea">
+    <ion-text>Rainfall Summary</ion-text>
+  </div>
+  -->
+  <ion-grid>
+    <ion-row div class="textRow">
+      <ion-col >
+        <div class="textCol">
+        <ion-label>Daily Total:</ion-label>
+      </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div class="buttonCol">
+        <ion-button expand="full" fill="clear" size="small">
+          <ion-text color="dark"><h6>{{ rainDailyMM }} mm</h6></ion-text>
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div><ion-label>Weekly Total:</ion-label></div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <div><ion-label>{{ weeklyTotal }} mm</ion-label></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          <div><ion-label>Monthly Total:</ion-label></div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div><ion-label>{{ monthlyTotal }} mm</ion-label></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div><ion-label>Quarterly Total:</ion-label></div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div><ion-label>{{ quarterlyTotal }} mm</ion-label></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div><ion-label>Yearly Total:</ion-label></div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div><ion-label>{{ yearlyTotal }} mm</ion-label></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div><ion-label>All Time Total:</ion-label></div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div><ion-label>{{ allTimeTotal }} mm</ion-label></div>
+        </ion-col>
+      </ion-row>
+   </ion-grid>
+   <ion-grid>
+    <ion-row>
+      <ion-col>
+      <div class = "listHeader">
+      <ion-text>Yearly Data</ion-text>
+      </div>
+    </ion-col>
+    <ion-col>
+      <ion-button  expand="block" strong=true size='small' (click)="displayList()">List</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button  expand="block" strong=true size='small' (click)="displayGraph()">Graph</ion-button>
+    </ion-col>
+    </ion-row>
+   </ion-grid>
+</ion-content>
+<ion-content>
+<div class="listArea">
+<ion-list>
+<ion-item *ngFor="let item of rainGaugeDailyHistory">
+    <ion-label>{{ item.rainDate }}</ion-label>
+    <ion-label class="ion-text-right">{{ item.rainDailyMM }} mm</ion-label>
+</ion-item>
+</ion-list>
+</div>
+</ion-content>
+
+
+

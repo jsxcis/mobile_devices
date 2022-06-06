@@ -1,0 +1,192 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-button slot="start" (click)="deviceList()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="deviceSettings()">
+        <ion-icon name="construct-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ deviceName }} Bore</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Bore State:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label [color]="boreState == 'RUNNING' ? 'success' : 'danger'">{{ boreState }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Bore Status:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label [color]="boreStatus == 'GOOD' ? 'success' : 'danger'">{{ boreStatus }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Bore Flow Rate:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ boreFlowRate }}L/MIN</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Bore Power:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ boreCurrent }}W</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Date:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceStatusDate }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>           
+    <ion-col>
+      <ion-button [disabled]="boreState == 'RUNNING' ? 'true' : 'false'"  expand = "block" strong=true [color]="boreState == 'RUNNING' ? 'medium' : 'success'" size='default' (click)="startBore()">Start</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button  [disabled]="boreState == 'STOPPED' ? 'true' : 'false'" expand="block" strong =true [color]="boreState == 'STOPPED' ? 'medium' : 'danger'" size='default' (click)="stopBore()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+ <ion-item  color='medium'>
+  <ion-title class="ion-text-center">Details</ion-title>
+</ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Mode:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label [color]="deviceMode == 'Online' ? 'success' : 'danger'">{{ deviceMode }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device IP:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceIP }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Comm:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceComm }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Battery:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceBattery }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LAT:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceLAT }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device LONG:</ion-label></div>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <div><ion-label>{{ deviceLONG }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Lora ID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ loraID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Flow L Per Pulse:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ flowLPerPulse }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Flow L Per Scan:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ flowLPerScan }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Flow Pulses Per Scan:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ flowPulsesPerScan }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Flow Time Stamp:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ flowTimeStamp }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Flow Accum Freq:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ flowAccumFreq }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device Version:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceVersion }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>Device UID:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ deviceUID }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div><ion-label>On Pulse Duration:</ion-label></div>
+    </ion-col>
+    <ion-col  class="ion-text-right">
+      <div><ion-label>{{ boreOnPulseDuration }}</ion-label></div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
