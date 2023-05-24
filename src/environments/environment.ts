@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   //apiUrl: 'http://localhost/xcis-api/',
-  apiUrl: 'http://192.168.0.101:8084/',
+  //apiUrl: 'http://192.168.0.101:8084/',
   //apiUrl: 'http://192.168.0.136/xcis-api/'
   //apiUrl: 'http://192.168.5.21/xcis-api/',
   //apiUrl: 'http://sharpnet.dnsalias.com/xcis-api-gw2/',
   //apiUrl: 'http://192.168.0.253/xcis-api/',
- //apiUrl: 'http://rosedale.dnsalias.com/xcis-api/',
-  //apiUrl: 'http://10.141.109.16/xcis-api/',
+ apiUrl: 'http://rosedale.dnsalias.com/xcis-api/',
+  //apiUrl: 'http://10.141.109.47/xcis-api/',
+  //apiUrl: 'http://192.168.0.102/xcis-api/',
   xcis_version: '3.0',
   buildDate: new Date().toISOString()
 };

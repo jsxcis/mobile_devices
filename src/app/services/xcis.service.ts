@@ -75,7 +75,7 @@ export class XcisService {
   }
   retrieveFences(postData: any): Observable<any> 
   {
-   // console.log('retrieveFences:' + postData.req);
+   //console.log('retrieveFences:' + postData.req);
     return this.httpService.post('xcisfencerest', postData);
   }
   retrieveTroughDetail(postData: any): Observable<any> 
@@ -90,7 +90,7 @@ export class XcisService {
   }
   retrieveTroughs(postData: any): Observable<any> 
   {
-   // console.log('retrieveTroughs:' + postData.req);
+   //console.log('retrieveTroughs:' + postData.req);
     return this.httpService.post('xcistroughrest', postData);
   }
   saveTroughSettings(postSettings: any): Observable<any> 
