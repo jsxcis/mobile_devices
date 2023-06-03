@@ -30,6 +30,7 @@ export class BoreSettingsPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: boolean;
   //Bore Specific
   public boreCurrent: string;
   public boreFlowRate: string;
@@ -66,7 +67,8 @@ export class BoreSettingsPage implements OnInit {
     flowLPerPulse: '',
     deviceVersion:'',
     boreOnPulseDuration:'',
-    deviceComm:''
+    deviceComm:'',
+    deviceStatus: ''
   };
   public boreData: any;
   public responseStatus: string
@@ -114,6 +116,14 @@ export class BoreSettingsPage implements OnInit {
       this.deviceStatusDate = this.bore[0].deviceStatusDate;
       this.deviceType = this.bore[0].deviceType;
       this.loraID = this.bore[0].loraID;
+      if (this.bore[0].deviceStatus == "Active")
+      {
+        this.deviceStatus = true;
+      }
+      else
+      {
+        this.deviceStatus = false;
+      }
       this.deviceComm = this.bore[0].deviceComm;
       this.deviceBattery = this.bore[0].deviceBattery;
       this.deviceVersion = this.bore[0].deviceVersion;
@@ -155,6 +165,18 @@ export class BoreSettingsPage implements OnInit {
     this.postSettings.deviceVersion = this.deviceVersion;
     this.postSettings.boreOnPulseDuration = this.boreOnPulseDuration;
     this.postSettings.deviceComm = this.deviceComm;
+    if (this.deviceStatus == true)
+    {
+      this.postSettings.deviceStatus = "Active";
+    }
+    else if (this.deviceStatus == false)
+    {
+      this.postSettings.deviceStatus = "Inactive";
+    }
+    else
+    {
+      this.postSettings.deviceStatus = "Error";
+    }
 
 
     this.xcisService.saveBoreSettings(this.postSettings).subscribe((res:any) => {
@@ -198,6 +220,7 @@ export class BoreSettingsPage implements OnInit {
         "deviceBattery":this.deviceBattery,
         "deviceVersion":this.deviceVersion,
         "deviceUID":this.deviceUID,
+        "deviceStatus":this.postSettings.deviceStatus,
 
         "boreCurrent":this.boreCurrent,
         "boreFlowRate":this.boreFlowRate,

@@ -25,6 +25,7 @@ export class TroughDetailPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: string;
 
   //Trough fields
   public troughValue: string;
@@ -62,6 +63,7 @@ export class TroughDetailPage implements OnInit {
       this.deviceBattery = params["deviceBattery"];
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
+      this.deviceStatus = params["deviceStatus"];
 
       // Troughs
       this.troughValue = params ["troughValue"];

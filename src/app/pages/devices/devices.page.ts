@@ -99,7 +99,8 @@ export class DevicesPage implements OnInit {
         "deviceComm":item.deviceComm,
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
-        "deviceUID":item.deviceUID
+        "deviceUID":item.deviceUID,
+        "deviceStatus":item.deviceStatus
       }
     };
     this.router.navigate(['home/tank-detail'],navigationExtras);
@@ -136,7 +137,8 @@ export class DevicesPage implements OnInit {
         "flowLPerPulse":item.flowLPerPulse,
         "flowPulsesPerScan":item.flowPulsesPerScan,
         "flowTimeStamp":item.flowTimeStamp,
-        "flowAccumFreq":item.flowAccumFreq
+        "flowAccumFreq":item.flowAccumFreq,
+        "deviceStatus":item.deviceStatus
       }
     };
     this.router.navigate(['home/bore-detail'],navigationExtras);
@@ -169,7 +171,8 @@ export class DevicesPage implements OnInit {
         "deviceComm":item.deviceComm,
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
-        "deviceUID":item.deviceUID
+        "deviceUID":item.deviceUID,
+        "deviceStatus":item.deviceStatus
         
       }
     };
@@ -202,7 +205,8 @@ export class DevicesPage implements OnInit {
         "deviceComm":item.deviceComm,
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
-        "deviceUID":item.deviceUID
+        "deviceUID":item.deviceUID,
+        "deviceStatus":item.deviceStatus
       }
     };
     this.router.navigate(['home/fence-detail'],navigationExtras);
@@ -235,7 +239,8 @@ export class DevicesPage implements OnInit {
         "deviceComm":item.deviceComm,
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
-        "deviceUID":item.deviceUID
+        "deviceUID":item.deviceUID,
+        "deviceStatus":item.deviceStatus
       }
     };
     this.router.navigate(['home/weather-detail'],navigationExtras);
@@ -267,7 +272,8 @@ export class DevicesPage implements OnInit {
         "deviceComm":item.deviceComm,
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
-        "deviceUID":item.deviceUID
+        "deviceUID":item.deviceUID,
+        "deviceStatus":item.deviceStatus
       }
     };
     this.router.navigate(['home/rainGauge-detail'],navigationExtras);
@@ -300,7 +306,8 @@ export class DevicesPage implements OnInit {
         "deviceComm":item.deviceComm,
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
-        "deviceUID":item.deviceUID
+        "deviceUID":item.deviceUID,
+        "deviceStatus":item.deviceStatus
       }
     };
     this.router.navigate(['home/flowMeter-detail'],navigationExtras);

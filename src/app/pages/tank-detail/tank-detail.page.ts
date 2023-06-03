@@ -24,6 +24,7 @@ export class TankDetailPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: string;
   //Tanks
   public totalVolume: string;
   public availVolume: string;
@@ -56,12 +57,12 @@ export class TankDetailPage implements OnInit {
       this.deviceStatusDate = params["deviceStatusDate"];
       this.deviceType = params["deviceType"];
       this.loraID = params["loraID"];
-
+      this.deviceStatus = params["deviceStatus"]; 
       this.deviceComm = params["deviceComm"];
       this.deviceBattery = params["deviceBattery"];
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
-
+      this.deviceStatus = params["deviceStatus"];
 
       // Tanks
       this.totalVolume = params ["totalVolume"];

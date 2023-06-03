@@ -29,6 +29,7 @@ export class BoreDetailPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: string;
 
 
   public boreDetail: any;
@@ -84,6 +85,7 @@ export class BoreDetailPage implements OnInit {
       this.deviceBattery = params["deviceBattery"];
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
+      this.deviceStatus = params["deviceStatus"];
 
       // Bores
       this.boreCurrent = params ["boreCurrent"];
@@ -133,6 +135,7 @@ export class BoreDetailPage implements OnInit {
       this.boreOnPulseDuration = this.boreDetail[0].boreOnPulseDuration;      
       this.flowLPerPulse = this.boreDetail[0].flowLPerPulse;
       this.flowAccumFreq = this.boreDetail[0].flowAccumFreq;
+      this.deviceStatus = this.boreDetail[0].deviceStatus;
       
       },
       (error: any) => {

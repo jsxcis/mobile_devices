@@ -47,6 +47,10 @@
           <ion-label position="stacked">Trough Full Height (mm)</ion-label>
           <ion-input inputmode="numeric" value = {{troughFullHeight}} autocomplete="off" name = "troughFullHeight" type='number' [(ngModel)]="troughFullHeight"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label justify="start">Sensor Active</ion-label>
+          <ion-toggle  value="{{deviceStatus}}" name = "deviceStatus" type='boolean' [(ngModel)]="deviceStatus"></ion-toggle>
+        </ion-item>
         <section>
           <ion-grid>
             <ion-row>

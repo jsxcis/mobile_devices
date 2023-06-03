@@ -24,6 +24,7 @@ export class TroughSettingsPage implements OnInit {
   public deviceLAT: string; 
   public deviceLONG: string;
   public deviceType: string;
+  public deviceStatus: boolean;
   //Trough fields
   public troughOverFlowHeight: string;
   public troughEmptyHeight: string;
@@ -52,7 +53,8 @@ export class TroughSettingsPage implements OnInit {
     deviceLONG: '',
     troughOverFlowHeight: '',
     troughEmptyHeight: '',
-    troughFullHeight: ''
+    troughFullHeight: '',
+    deviceStatus: ''
   };
 
   public troughData: any;
@@ -103,6 +105,14 @@ export class TroughSettingsPage implements OnInit {
       this.deviceType = this.trough[0].deviceType;
       this.deviceIP = this.trough[0].deviceIP;
       this.loraID = this.trough[0].loraID;
+      if (this.trough[0].deviceStatus == "Active")
+      {
+        this.deviceStatus = true;
+      }
+      else
+      {
+        this.deviceStatus = false;
+      }
       this.deviceLAT = this.trough[0].deviceLAT;
       this.deviceLONG = this.trough[0].deviceLONG;
       this.troughOverFlowHeight = this.trough[0].troughOverFlowHeight;
@@ -134,6 +144,18 @@ export class TroughSettingsPage implements OnInit {
     this.postSettings.troughOverFlowHeight = this.troughOverFlowHeight;
     this.postSettings.troughFullHeight = this.troughFullHeight;
     this.postSettings.troughEmptyHeight = this.troughEmptyHeight;
+    if (this.deviceStatus == true)
+    {
+      this.postSettings.deviceStatus = "Active";
+    }
+    else if (this.deviceStatus == false)
+    {
+      this.postSettings.deviceStatus = "Inactive";
+    }
+    else
+    {
+      this.postSettings.deviceStatus = "Error";
+    }
 
     this.xcisService.saveTroughSettings(this.postSettings).subscribe((res:any) => {
     this.troughData = res.troughData;
@@ -178,6 +200,7 @@ export class TroughSettingsPage implements OnInit {
         "deviceType":this.deviceType,
         "deviceIP":this.deviceIP,
         "loraID":this.loraID,
+        "deviceStatus":this.postSettings.deviceStatus,
         "deviceLAT":this.deviceLAT,
         "deviceLONG":this.deviceLONG
       }

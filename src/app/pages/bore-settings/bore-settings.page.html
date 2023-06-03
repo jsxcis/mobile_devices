@@ -55,6 +55,10 @@
           <ion-label position="stacked">Device Comm</ion-label>
           <ion-input value = {{deviceComm}} autocomplete="off" name = "deviceComm" type='text' [(ngModel)]="deviceComm"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label justify="start">Sensor Active</ion-label>
+          <ion-toggle  value="{{deviceStatus}}" name = "deviceStatus" type='boolean' [(ngModel)]="deviceStatus"></ion-toggle>
+        </ion-item>
         <section>
           <ion-grid>
             <ion-row>

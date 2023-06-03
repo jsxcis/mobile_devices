@@ -26,6 +26,7 @@ export class TankSettingsPage implements OnInit {
   public loraID: string;
   public deviceLAT: string;
   public deviceLONG: string;
+  public deviceStatus: boolean;
   //Tanks
   public totalVolume: string;
   public availVolume: string;
@@ -51,7 +52,8 @@ export class TankSettingsPage implements OnInit {
     deviceLONG: '',
     totalVolume: '', // Editable fields
     totalDepth: '',
-    reserveDepth: ''
+    reserveDepth: '',
+    deviceStatus: ''
   };
 
   public tankData: any;
@@ -99,6 +101,14 @@ export class TankSettingsPage implements OnInit {
       this.deviceStatusDate = this.tank[0].deviceStatusDate;
       this.deviceType = this.tank[0].deviceType;
       this.loraID = this.tank[0].loraID;
+      if (this.tank[0].deviceStatus == "Active")
+      {
+        this.deviceStatus = true;
+      }
+      else
+      {
+        this.deviceStatus = false;
+      }
       // tanks
       this.totalVolume = this.tank[0].totalVolume;
       this.availVolume = this.tank[0].availVolume;
@@ -128,6 +138,20 @@ export class TankSettingsPage implements OnInit {
     this.postSettings.totalVolume = this.totalVolume;
     this.postSettings.totalDepth = this.totalDepth;
     this.postSettings.reserveDepth = this.reserveDepth;
+    if (this.deviceStatus == true)
+    {
+      this.postSettings.deviceStatus = "Active";
+    }
+    else if (this.deviceStatus == false)
+    {
+      this.postSettings.deviceStatus = "Inactive";
+    }
+    else
+    {
+      this.postSettings.deviceStatus = "Error";
+    }
+    
+    console.log(this.deviceStatus);
 
     this.xcisService.saveTankSettings(this.postSettings).subscribe((res:any) => {
     this.tankData = res.tankData;
@@ -166,6 +190,7 @@ export class TankSettingsPage implements OnInit {
         "deviceStatusDate": this.deviceStatusDate,
         "deviceType":this.deviceType,
         "loraID":this.loraID,
+        "deviceStatus":this.postSettings.deviceStatus,
       
         //tanks
         "totalVolume": this.totalVolume,
