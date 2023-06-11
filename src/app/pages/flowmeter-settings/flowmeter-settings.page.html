@@ -43,6 +43,10 @@
           <ion-label position="stacked">Flow L Per Pulse (L)</ion-label>
           <ion-input inputmode="decimal" value = {{flowLPerPulse}} autocomplete="off" name = "flowLPerPulse" type='number' [(ngModel)]="flowLPerPulse"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label justify="start">Sensor Active</ion-label>
+          <ion-toggle  value="{{deviceStatus}}" name = "deviceStatus" type='boolean' [(ngModel)]="deviceStatus"></ion-toggle>
+        </ion-item>
         <section>
           <ion-grid>
             <ion-row>

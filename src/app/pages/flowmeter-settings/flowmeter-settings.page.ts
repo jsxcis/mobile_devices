@@ -26,6 +26,7 @@ export class FlowmeterSettingsPage implements OnInit {
   public loraID: string;
   public deviceLAT: string;
   public deviceLONG: string;
+  public deviceStatus: boolean;
   // flowMeter
   public flowMeterDetail: any;
 
@@ -54,7 +55,8 @@ export class FlowmeterSettingsPage implements OnInit {
     deviceLAT: '',
     deviceLONG: '',
     flowAccumFreq: '', // Editable fields
-    flowLPerPulse: ''
+    flowLPerPulse: '',
+    deviceStatus: ''
   };
   public flowMeterData: any;
   public responseStatus: string
@@ -111,6 +113,14 @@ export class FlowmeterSettingsPage implements OnInit {
       this.deviceStatusDate = this.flowMeter[0].deviceStatusDate;
       this.deviceType = this.flowMeter[0].deviceType;
       this.loraID = this.flowMeter[0].loraID;
+      if (this.flowMeter[0].deviceStatus == "Active")
+      {
+        this.deviceStatus = true;
+      }
+      else
+      {
+        this.deviceStatus = false;
+      }
       
       this.flowLPerPulse = this.flowMeter[0].flowLPerPulse;
       this.flowLPerScan = this.flowMeter[0].flowLPerScan;
@@ -140,6 +150,18 @@ export class FlowmeterSettingsPage implements OnInit {
     this.postSettings.deviceLONG = this.deviceLONG;
     this.postSettings.flowAccumFreq = this.flowAccumFreq;
     this.postSettings.flowLPerPulse = this.flowLPerPulse;
+    if (this.deviceStatus == true)
+    {
+      this.postSettings.deviceStatus = "Active";
+    }
+    else if (this.deviceStatus == false)
+    {
+      this.postSettings.deviceStatus = "Inactive";
+    }
+    else
+    {
+      this.postSettings.deviceStatus = "Error";
+    }
 
     this.xcisService.saveFlowMeterSettings(this.postSettings).subscribe((res:any) => {
     this.flowMeterData = res.flowMeterData;
@@ -168,6 +190,7 @@ export class FlowmeterSettingsPage implements OnInit {
         "deviceStatusDate": this.deviceStatusDate,
         "deviceType":this.deviceType,
         "loraID":this.loraID,
+        "deviceStatus":this.postSettings.deviceStatus,
       
         //flow meter detail
         "flowMMPerPulse": this.flowLPerPulse,

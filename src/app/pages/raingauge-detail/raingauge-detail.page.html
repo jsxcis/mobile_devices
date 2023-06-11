@@ -180,5 +180,13 @@
         <div><ion-label>{{ deviceUID }}</ion-label></div>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <div><ion-label>Device Status:</ion-label></div>
+      </ion-col>
+      <ion-col  class="ion-text-right">
+        <div><ion-label [color]="deviceStatus == 'Active' ? 'success' : 'danger'">{{ deviceStatus }}</ion-label></div>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

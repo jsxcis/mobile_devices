@@ -30,6 +30,7 @@ export class RaingaugeDetailPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: string;
   // rain gauge
   public rainGaugeDetail: any;
 
@@ -87,6 +88,7 @@ export class RaingaugeDetailPage implements OnInit {
       this.deviceBattery = params["deviceBattery"];
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
+      this.deviceStatus = params["deviceStatus"];
 
       // rain gauge
 

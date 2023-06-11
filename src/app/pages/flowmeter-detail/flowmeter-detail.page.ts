@@ -29,6 +29,7 @@ export class FlowmeterDetailPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: string;
 
   // flow meter
   public flowMeterDetail: any;
@@ -88,6 +89,7 @@ export class FlowmeterDetailPage implements OnInit {
       this.deviceBattery = params["deviceBattery"];
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
+      this.deviceStatus = params["deviceStatus"];
 
       // flow meter
 
@@ -115,6 +117,7 @@ export class FlowmeterDetailPage implements OnInit {
     this.deviceID = deviceID;
    // console.log("showDetail");
     this.postData.deviceID = deviceID;
+  
    // console.log(" for:")
    // console.log(this.postData.deviceID);
     this.postData.req = "detail";

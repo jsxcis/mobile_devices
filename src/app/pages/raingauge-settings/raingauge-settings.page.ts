@@ -26,6 +26,7 @@ export class RaingaugeSettingsPage implements OnInit {
   public loraID: string;
   public deviceLAT: string;
   public deviceLONG: string;
+  public deviceStatus: boolean;
   // rain gauge
   public rainGaugeDetail: any;
 
@@ -55,7 +56,8 @@ export class RaingaugeSettingsPage implements OnInit {
     deviceLAT: '',
     deviceLONG: '',
     rainAccumFreq: '', // Editable fields
-    rainMMPerPulse: ''
+    rainMMPerPulse: '',
+    deviceStatus: ''
   };
   public rainGaugeData: any;
   public responseStatus: string
@@ -111,6 +113,14 @@ export class RaingaugeSettingsPage implements OnInit {
       this.deviceStatusDate = this.rainGauge[0].deviceStatusDate;
       this.deviceType = this.rainGauge[0].deviceType;
       this.loraID = this.rainGauge[0].loraID;
+      if (this.rainGauge[0].deviceStatus == "Active")
+      {
+        this.deviceStatus = true;
+      }
+      else
+      {
+        this.deviceStatus = false;
+      }
       // tanks
       this.rainMMPerPulse = this.rainGauge[0].rainMMPerPulse;
       this.rainMMPerScan = this.rainGauge[0].rainMMPerScan;
@@ -139,6 +149,18 @@ export class RaingaugeSettingsPage implements OnInit {
     this.postSettings.deviceLONG = this.deviceLONG;
     this.postSettings.rainAccumFreq = this.rainAccumFreq;
     this.postSettings.rainMMPerPulse = this.rainMMPerPulse;
+    if (this.deviceStatus == true)
+    {
+      this.postSettings.deviceStatus = "Active";
+    }
+    else if (this.deviceStatus == false)
+    {
+      this.postSettings.deviceStatus = "Inactive";
+    }
+    else
+    {
+      this.postSettings.deviceStatus = "Error";
+    }
 
     this.xcisService.saveRainGaugeSettings(this.postSettings).subscribe((res:any) => {
     this.rainGaugeData = res.rainGaugeData;
@@ -167,6 +189,7 @@ export class RaingaugeSettingsPage implements OnInit {
         "deviceStatusDate": this.deviceStatusDate,
         "deviceType":this.deviceType,
         "loraID":this.loraID,
+        "deviceStatus":this.postSettings.deviceStatus,
       
         //rain gauge detail
         "rainMMPerPulse": this.rainMMPerPulse,

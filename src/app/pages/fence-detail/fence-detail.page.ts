@@ -25,6 +25,7 @@ export class FenceDetailPage implements OnInit {
   public deviceBattery: string;
   public deviceVersion: string;
   public deviceUID: string;
+  public deviceStatus: string;
 
   //Fence
   public fenceValue: string;
@@ -61,6 +62,7 @@ export class FenceDetailPage implements OnInit {
       this.deviceBattery = params["deviceBattery"];
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
+      this.deviceStatus = params["deviceStatus"];
 
       // Fence
       this.fenceValue = params ["fenceValue"];

@@ -26,6 +26,7 @@ export class FenceSettingsPage implements OnInit {
   public loraID: string;
   public deviceLAT: string;
   public deviceLONG: string;
+  public deviceStatus: boolean;
   //Tanks
   public fenceValue: string;
   public fenceMultiplier: string;
@@ -52,7 +53,8 @@ export class FenceSettingsPage implements OnInit {
     fenceMultiplier: '', // Editable fields
     fenceLowValue: '',
     fenceOffValue: '',
-    fenceOnValue: ''
+    fenceOnValue: '',
+    deviceStatus: ''
   };
   public fenceData: any;
   public responseStatus: string
@@ -98,7 +100,15 @@ export class FenceSettingsPage implements OnInit {
       this.deviceStatusDate = this.fence[0].deviceStatusDate;
       this.deviceType = this.fence[0].deviceType;
       this.loraID = this.fence[0].loraID;
-      // tanks
+      if (this.fence[0].deviceStatus == "Active")
+      {
+        this.deviceStatus = true;
+      }
+      else
+      {
+        this.deviceStatus = false;
+      }
+      // fences
       this.fenceValue = this.fence[0].fenceValue;
       this.fenceMultiplier = this.fence[0].fenceMultiplier;
       this.fenceLowValue = this.fence[0].fenceLowValue;
@@ -128,6 +138,18 @@ export class FenceSettingsPage implements OnInit {
     this.postSettings.fenceLowValue = this.fenceLowValue;
     this.postSettings.fenceOffValue = this.fenceOffValue;
     this.postSettings.fenceOnValue = this.fenceOnValue;
+    if (this.deviceStatus == true)
+    {
+      this.postSettings.deviceStatus = "Active";
+    }
+    else if (this.deviceStatus == false)
+    {
+      this.postSettings.deviceStatus = "Inactive";
+    }
+    else
+    {
+      this.postSettings.deviceStatus = "Error";
+    }
 
     this.xcisService.saveFenceSettings(this.postSettings).subscribe((res:any) => {
     this.fenceData = res.fenceData;
@@ -166,6 +188,8 @@ export class FenceSettingsPage implements OnInit {
         "deviceStatusDate": this.deviceStatusDate,
         "deviceType":this.deviceType,
         "loraID":this.loraID,
+        "deviceStatus":this.postSettings.deviceStatus,
+
       
         //tanks
         "fenceValue": this.fenceValue,
