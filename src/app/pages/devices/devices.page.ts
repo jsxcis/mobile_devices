@@ -31,7 +31,9 @@ export class DevicesPage implements OnInit {
 
   public postData = {
    userID: 'jsharp',
-   req: 'all',
+   //req: 'all',
+   req: 'status',
+   state: 'Active',
    deviceID : "all"
  };
 
