@@ -16,6 +16,9 @@ export class SettingsPage implements OnInit {
   public version:string;
   public serverURL:string;
   public buildDate: any;
+  public deviceStatus: string;
+
+   item:DataTransferItem;
 
   constructor(
     private router: Router,
@@ -57,30 +60,44 @@ export class SettingsPage implements OnInit {
       }
       )
 }
-showAppDetails()
+  showAppDetails()
   {
    
    console.log("showAppDetails");
 
     this.router.navigate(['home/app-details']);
   }
-
-addSensors()
+  addSensors()
   {
    
    console.log("addSensors");
 
     this.router.navigate(['home/add-sensors']);
   }
-  configureApp()
+  configure()
   {
-   
    console.log("addSensors");
+   this.deviceStatus = "All";
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "state":this.deviceStatus
+      }
+    };
 
-    this.router.navigate(['home/configure-app']);
+    this.router.navigate(['home/configuration'], navigationExtras);
   }
+  listDevices()
+  {
+    console.log("listDevices");
+    this.deviceStatus = "All";
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "state":this.deviceStatus
+      }
+    };
+    this.router.navigate(['home/devices'], navigationExtras);
 
-
+  }
 
 
 }

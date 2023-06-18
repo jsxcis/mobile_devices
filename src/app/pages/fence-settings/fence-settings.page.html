@@ -11,6 +11,7 @@
 <ion-content>
   <form>
     <ion-list>
+      <div *ngIf="displayContext=='Editable'">
       <ion-item>
         <ion-label position="stacked">Device Identifier</ion-label>
         <ion-input value = {{deviceID}} autocomplete="off" name = "deviceID" type='text' [(ngModel)]="deviceID" readonly></ion-input>
@@ -51,6 +52,7 @@
           <ion-label position="stacked">Fence Off Value (KV)</ion-label>
           <ion-input inputmode="decimal" value = {{fenceOffValue}} autocomplete="off" name = "fenceOffValue" type='number' [(ngModel)]="fenceOffValue"></ion-input>
         </ion-item>
+      </div>
         <ion-item>
           <ion-label justify="start">Sensor Active</ion-label>
           <ion-toggle  value="{{deviceStatus}}" name = "deviceStatus" type='boolean' [(ngModel)]="deviceStatus"></ion-toggle>

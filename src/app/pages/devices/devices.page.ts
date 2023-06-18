@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -25,6 +26,8 @@ export class DevicesPage implements OnInit {
   public rainGaugeDetail: any;
   public deviceID:string;
   public rainDailyMM: string;
+  public deviceStatus:string;
+  public displayContext:string;
 
 
   item:DataTransferItem;
@@ -37,7 +40,7 @@ export class DevicesPage implements OnInit {
    deviceID : "all"
  };
 
-  constructor(
+  constructor( private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private xcisService: XcisService,
@@ -53,6 +56,7 @@ export class DevicesPage implements OnInit {
     })
     //this.loadXML();
     //console.log("device page ngOnInit")
+    this.displayContext = "Controllable"; // Set the display status for device control`
     this.loadTanks();
     this.loadBores();
     this.loadTroughs();
@@ -64,7 +68,15 @@ export class DevicesPage implements OnInit {
   ionViewWillEnter()
   {
     //this.loadXML();
-    //console.log("device page   ionViewWillEnter");
+    console.log("Devices page ionViewWillEnter");
+    this.route.queryParams.subscribe(params => {
+      this.deviceStatus = params["state"];
+    });
+    if (this.deviceStatus == "All")
+    {
+      console.log("Loading all devices");
+    }
+
     this.loadTanks();
     this.loadBores();
     this.loadTroughs();
@@ -102,7 +114,8 @@ export class DevicesPage implements OnInit {
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
         "deviceUID":item.deviceUID,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
       }
     };
     this.router.navigate(['home/tank-detail'],navigationExtras);
@@ -140,7 +153,8 @@ export class DevicesPage implements OnInit {
         "flowPulsesPerScan":item.flowPulsesPerScan,
         "flowTimeStamp":item.flowTimeStamp,
         "flowAccumFreq":item.flowAccumFreq,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
       }
     };
     this.router.navigate(['home/bore-detail'],navigationExtras);
@@ -174,7 +188,8 @@ export class DevicesPage implements OnInit {
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
         "deviceUID":item.deviceUID,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
         
       }
     };
@@ -208,7 +223,8 @@ export class DevicesPage implements OnInit {
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
         "deviceUID":item.deviceUID,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
       }
     };
     this.router.navigate(['home/fence-detail'],navigationExtras);
@@ -242,7 +258,8 @@ export class DevicesPage implements OnInit {
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
         "deviceUID":item.deviceUID,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
       }
     };
     this.router.navigate(['home/weather-detail'],navigationExtras);
@@ -275,7 +292,8 @@ export class DevicesPage implements OnInit {
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
         "deviceUID":item.deviceUID,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
       }
     };
     this.router.navigate(['home/rainGauge-detail'],navigationExtras);
@@ -309,7 +327,8 @@ export class DevicesPage implements OnInit {
         "deviceBattery":item.deviceBattery,
         "deviceVersion":item.deviceVersion,
         "deviceUID":item.deviceUID,
-        "deviceStatus":item.deviceStatus
+        "deviceStatus":item.deviceStatus,
+        "displayContext":this.displayContext
       }
     };
     this.router.navigate(['home/flowMeter-detail'],navigationExtras);
@@ -424,6 +443,11 @@ export class DevicesPage implements OnInit {
   }
   loadTanks()
   {
+    //if (this.deviceStatus == "All")
+    //{
+    //  console.log("Loading inactive tanks");
+    //  this.postData.state = "All";
+    //}
     //  console.log("loadTanks");
       this.xcisService.retrieveTanks(this.postData).subscribe((res:any) => {
       this.tanks = res.tankData;

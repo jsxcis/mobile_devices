@@ -30,6 +30,8 @@ export class FlowmeterDetailPage implements OnInit {
   public deviceVersion: string;
   public deviceUID: string;
   public deviceStatus: string;
+  // Context data
+  public displayContext:string;
 
   // flow meter
   public flowMeterDetail: any;
@@ -90,6 +92,8 @@ export class FlowmeterDetailPage implements OnInit {
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
       this.deviceStatus = params["deviceStatus"];
+      // context data
+      this.displayContext = params["displayContext"];
 
       // flow meter
 
@@ -143,7 +147,8 @@ export class FlowmeterDetailPage implements OnInit {
    // console.log("settingsAdmin for:" + this.deviceID + this.deviceType);
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "deviceID":this.deviceID
+        "deviceID":this.deviceID,
+        "displayContext":this.displayContext
       }
     };
     // Use Device Type to navigate to the right settings page
@@ -154,12 +159,20 @@ export class FlowmeterDetailPage implements OnInit {
    // console.log("deviceList");
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "deviceID":this.deviceID
+        "deviceID":this.deviceID,
+        "displayContext":this.displayContext
       }
     };
-    // Use Device Type to navigate to the right settings page
+   // Use Device Type to navigate to the right settings page
     // If (this.deviceType = "Trough" etc)
-    this.router.navigate(['home/devices'],navigationExtras);
+    if (this.displayContext == "Controllable")
+    {
+      this.router.navigate(['home/devices'],navigationExtras);
+    } 
+    else // Editable option
+    {
+      this.router.navigate(['home/configuration'],navigationExtras);
+    }
   }
 
 }

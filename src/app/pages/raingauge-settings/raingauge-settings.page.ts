@@ -27,6 +27,9 @@ export class RaingaugeSettingsPage implements OnInit {
   public deviceLAT: string;
   public deviceLONG: string;
   public deviceStatus: boolean;
+  // context data
+  public displayContext:string; 
+
   // rain gauge
   public rainGaugeDetail: any;
 
@@ -78,6 +81,8 @@ export class RaingaugeSettingsPage implements OnInit {
    // console.log("Loading detail on enter");
       this.route.queryParams.subscribe(params => {
       this.deviceID = params["deviceID"];
+      // context data
+      this.displayContext = params["displayContext"];
     });
     //console.log(this.deviceID);
     this.loadRainGaugeDetail();
@@ -190,6 +195,7 @@ export class RaingaugeSettingsPage implements OnInit {
         "deviceType":this.deviceType,
         "loraID":this.loraID,
         "deviceStatus":this.postSettings.deviceStatus,
+        "displayContext":this.displayContext,
       
         //rain gauge detail
         "rainMMPerPulse": this.rainMMPerPulse,

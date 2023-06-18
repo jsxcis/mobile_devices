@@ -25,6 +25,8 @@ export class TankDetailPage implements OnInit {
   public deviceVersion: string;
   public deviceUID: string;
   public deviceStatus: string;
+  // Context data
+  public displayContext:string;
   //Tanks
   public totalVolume: string;
   public availVolume: string;
@@ -63,6 +65,8 @@ export class TankDetailPage implements OnInit {
       this.deviceVersion = params["deviceVersion"];
       this.deviceUID = params["deviceUID"];
       this.deviceStatus = params["deviceStatus"];
+      // context data
+      this.displayContext = params["displayContext"];
 
       // Tanks
       this.totalVolume = params ["totalVolume"];
@@ -75,9 +79,11 @@ export class TankDetailPage implements OnInit {
   
 
     });
-   // console.log(this.deviceID);
-    //console.log(this.deviceName);
-   // console.log(this.deviceType);
+    console.log(this.deviceID);
+    console.log(this.deviceName);
+    console.log(this.deviceType);
+    console.log(this.displayContext);
+
     this.storageService.store("DEVICEID", this.deviceID);
     this.storageService.store("DEVICETYPE",this.deviceType);
   }
@@ -85,7 +91,8 @@ export class TankDetailPage implements OnInit {
    // console.log("settingsAdmin for:" + this.deviceID + this.deviceType);
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "deviceID":this.deviceID
+        "deviceID":this.deviceID,
+        "displayContext":this.displayContext
       }
     };
     // Use Device Type to navigate to the right settings page
@@ -96,11 +103,19 @@ export class TankDetailPage implements OnInit {
     //console.log("deviceList");
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "deviceID":this.deviceID
+        "deviceID":this.deviceID,
+        "displayContext":this.displayContext
       }
     };
     // Use Device Type to navigate to the right settings page
     // If (this.deviceType = "Trough" etc)
-    this.router.navigate(['home/devices'],navigationExtras);
+    if (this.displayContext == "Controllable")
+    {
+      this.router.navigate(['home/devices'],navigationExtras);
+    } 
+    else // Editable option
+    {
+      this.router.navigate(['home/configuration'],navigationExtras);
+    }
   }
 }

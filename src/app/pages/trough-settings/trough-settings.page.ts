@@ -25,6 +25,8 @@ export class TroughSettingsPage implements OnInit {
   public deviceLONG: string;
   public deviceType: string;
   public deviceStatus: boolean;
+   // context data
+   public displayContext:string; 
   //Trough fields
   public troughOverFlowHeight: string;
   public troughEmptyHeight: string;
@@ -77,6 +79,8 @@ export class TroughSettingsPage implements OnInit {
     //console.log("Loading detail on enter");
       this.route.queryParams.subscribe(params => {
       this.deviceID = params["deviceID"];
+      // context data
+      this.displayContext = params["displayContext"];
     });
    // console.log(this.deviceID);
     this.loadTroughDetail();
@@ -202,7 +206,8 @@ export class TroughSettingsPage implements OnInit {
         "loraID":this.loraID,
         "deviceStatus":this.postSettings.deviceStatus,
         "deviceLAT":this.deviceLAT,
-        "deviceLONG":this.deviceLONG
+        "deviceLONG":this.deviceLONG,
+        "displayContext":this.displayContext
       }
     };
     // Use Device Type to navigate to the right settings page

@@ -1,13 +1,15 @@
 <ion-header>
   <ion-toolbar color='primary'>
-    <ion-title>Rosedale Devices</ion-title>
+    <ion-title>Devices</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list>
+    <div *ngIf="tanks?.length>0">
     <ion-item color='light'>
     <ion-label class="ion-text-center">Tanks</ion-label>
   </ion-item>
+  </div>
     <ion-item-sliding *ngFor="let item of tanks">
       <ion-item>
         <img src='assets/images/watertankicon.jpg' alt="XCIS Logo" width="40" height = "40"/>
@@ -20,9 +22,11 @@
         <ion-item-option (click)="showTankDetail(item.deviceID,item)">>></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="bores?.length>0">
     <ion-item color='light'>
       <ion-label class="ion-text-center">Bores</ion-label>
     </ion-item>
+    </div>
     <ion-item-sliding *ngFor="let item of bores">
       <ion-item>
         <img src='assets/images/bore.jpg' alt="XCIS Logo" width="40" height = "40"/>
@@ -35,9 +39,11 @@
         <ion-item-option (click)="showBoreDetail(item.deviceID,item)">>></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="troughs?.length>0">
     <ion-item  color='light'>
       <ion-label class="ion-text-center">Troughs</ion-label>
     </ion-item>
+    </div>
     <ion-item-sliding *ngFor="let item of troughs">
       <ion-item>
         <img src='assets/images/trough.jpg' alt="XCIS Logo" width="40" height = "40"/>
@@ -50,9 +56,11 @@
         <ion-item-option (click)="showTroughDetail(item.deviceID,item)">>></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="fences?.length>0">
     <ion-item  color='light'>
       <ion-label class="ion-text-center">Fences</ion-label>
     </ion-item>
+    </div>
     <ion-item-sliding *ngFor="let item of fences">
       <ion-item>
         <img src='assets/images/electricfence.png' alt="XCIS Logo" width="40" height = "40"/>
@@ -68,9 +76,11 @@
         <ion-item-option (click)="showFenceDetail(item.deviceID,item)">>></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="weatherStns?.length>0">
     <ion-item  color='light'>
       <ion-label class="ion-text-center">Weather Stations</ion-label>
     </ion-item>
+    </div>
     <ion-item-sliding *ngFor="let item of weatherStns">
       <ion-item>
         <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
@@ -83,9 +93,11 @@
         <ion-item-option (click)="showWeatherStnDetail(item.deviceID,item)">>></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="rainGauges?.length>0">
     <ion-item  color='light'>
       <ion-label class="ion-text-center">Rain Gauges</ion-label>
     </ion-item>
+    </div>
     <ion-item-sliding *ngFor="let item of rainGauges">
       <ion-item>
         <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
@@ -98,9 +110,11 @@
         <ion-item-option (click)="showRainGaugeDetail(item.deviceID,item)">>></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+    <div *ngIf="flowMeters?.length>0">
     <ion-item  color='light'>
       <ion-label class="ion-text-center">Flow Meters</ion-label>
     </ion-item>
+    </div>
     <ion-item-sliding *ngFor="let item of flowMeters">
       <ion-item>
         <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>

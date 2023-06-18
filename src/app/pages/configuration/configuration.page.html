@@ -1,9 +1,132 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>configuration</ion-title>
+  <ion-toolbar color='primary'>
+    <ion-title>Sensor Configuration</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-list>
+    <div *ngIf="tanks?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Tanks - Inactive</ion-label>
+      </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of tanks">
+      <ion-item>
+        <img src='assets/images/watertankicon.jpg' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label class="ion-text-right">{{ item.deviceLevel }} %</ion-label>
+      </ion-item>
+      <ion-item-options sde="end">
+        <ion-item-option (click)="showTankDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="bores?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Bores - Inactive</ion-label>
+    </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of bores">
+      <ion-item>
+        <img src='assets/images/bore.jpg' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label [color]="item.boreState == 'RUNNING' ? 'success' : 'danger'" class="ion-text-right">{{ item.boreState }}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="showBoreDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="troughs?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Troughs - Inactive</ion-label>
+    </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of troughs">
+      <ion-item>
+        <img src='assets/images/trough.jpg' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label class="ion-text-right">{{ item.deviceLevel }} %</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="showTroughDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="fences?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Fences - Inactive</ion-label>
+    </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of fences">
+      <ion-item>
+        <img src='assets/images/electricfence.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label>{{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label *ngIf="item.fenceStatus == 'ON'" color='success' class="ion-text-right">NOMINAL</ion-label>
+          <ion-label *ngIf="item.fenceStatus == 'LOW VOLTS'" color='warning' class="ion-text-right">{{ item.fenceStatus }}</ion-label>
+          <ion-label *ngIf="item.fenceStatus == 'OFF'" color='danger' class="ion-text-right">{{ item.fenceStatus }}</ion-label>
+          <ion-label *ngIf="item.fenceStatus == 'UNKNOWN'" color='danger' class="ion-text-right">{{ item.fenceStatus }}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="showFenceDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="weatherStns?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Weather Stations - Inactive</ion-label>
+    </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of weatherStns">
+      <ion-item>
+        <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label> {{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label [color]="item.deviceMode == 'Online' ? 'success' : 'danger'" class="ion-text-right">{{ item.deviceMode }}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="showWeatherStnDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="rainGauges?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Rain Gauges - Inactive</ion-label>
+    </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of rainGauges">
+      <ion-item>
+        <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label> {{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label [color]="item.deviceMode == 'Online' ? 'success' : 'danger'" class="ion-text-right">{{ item.deviceMode }}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="showRainGaugeDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <div *ngIf="flowMeters?.length>0">
+      <ion-item color='light'>
+      <ion-label class="ion-text-center">Flow Meters - Inactive</ion-label>
+    </ion-item>
+    </div>
+    <ion-item-sliding *ngFor="let item of flowMeters">
+      <ion-item>
+        <img src='assets/images/weatherstn.png' alt="XCIS Logo" width="40" height = "40"/>
+          <ion-label> {{ item.deviceName }}</ion-label>
+          <ion-label *ngIf="item.deviceMode == 'Online'" class="ion-text-right"><ion-icon name="checkmark-circle" color="success"></ion-icon></ion-label>
+          <ion-label *ngIf="item.deviceMode != 'Online'" class="ion-text-right"><ion-icon name="close-circle" color="danger"></ion-icon></ion-label>
+          <ion-label [color]="item.deviceMode == 'Online' ? 'success' : 'danger'" class="ion-text-right">{{ item.flowRate }} L/min</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="showFlowMeterDetail(item.deviceID,item)">>></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  </ion-content>
 
-</ion-content>

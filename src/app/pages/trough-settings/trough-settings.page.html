@@ -11,6 +11,7 @@
 <ion-content>
   <form>
     <ion-list>
+      <div *ngIf="displayContext=='Editable'">
       <ion-item>
         <ion-label position="stacked">Device Identifier</ion-label>
         <ion-input value = {{deviceID}} autocomplete="off" name = "deviceID" type='text' [(ngModel)]="deviceID" readonly></ion-input>
@@ -47,6 +48,7 @@
           <ion-label position="stacked">Trough Full Height (mm)</ion-label>
           <ion-input inputmode="numeric" value = {{troughFullHeight}} autocomplete="off" name = "troughFullHeight" type='number' [(ngModel)]="troughFullHeight"></ion-input>
         </ion-item>
+      </div>
         <ion-item>
           <ion-label justify="start">Sensor Active</ion-label>
           <ion-toggle  value="{{deviceStatus}}" name = "deviceStatus" type='boolean' [(ngModel)]="deviceStatus"></ion-toggle>

@@ -27,6 +27,8 @@ export class FenceSettingsPage implements OnInit {
   public deviceLAT: string;
   public deviceLONG: string;
   public deviceStatus: boolean;
+   // context data
+   public displayContext:string; 
   //Tanks
   public fenceValue: string;
   public fenceMultiplier: string;
@@ -75,8 +77,11 @@ export class FenceSettingsPage implements OnInit {
    // console.log("Loading detail on enter");
       this.route.queryParams.subscribe(params => {
       this.deviceID = params["deviceID"];
+      // context data
+      this.displayContext = params["displayContext"];
     });
    // console.log(this.deviceID);
+   console.log(this.displayContext);
     this.loadFenceDetail();
   }
   loadFenceDetail()
@@ -189,8 +194,8 @@ export class FenceSettingsPage implements OnInit {
         "deviceType":this.deviceType,
         "loraID":this.loraID,
         "deviceStatus":this.postSettings.deviceStatus,
+        "displayContext":this.displayContext,
 
-      
         //tanks
         "fenceValue": this.fenceValue,
         "fenceMultiplier": this.fenceMultiplier,

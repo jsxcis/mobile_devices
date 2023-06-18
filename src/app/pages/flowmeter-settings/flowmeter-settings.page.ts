@@ -27,6 +27,9 @@ export class FlowmeterSettingsPage implements OnInit {
   public deviceLAT: string;
   public deviceLONG: string;
   public deviceStatus: boolean;
+   // context data
+   public displayContext:string; 
+
   // flowMeter
   public flowMeterDetail: any;
 
@@ -78,6 +81,8 @@ export class FlowmeterSettingsPage implements OnInit {
    // console.log("Loading detail on enter");
       this.route.queryParams.subscribe(params => {
       this.deviceID = params["deviceID"];
+       // context data
+       this.displayContext = params["displayContext"];
     });
    // console.log(this.deviceID);
     this.loadFlowMeterDetail();
@@ -191,6 +196,7 @@ export class FlowmeterSettingsPage implements OnInit {
         "deviceType":this.deviceType,
         "loraID":this.loraID,
         "deviceStatus":this.postSettings.deviceStatus,
+        "displayContext":this.displayContext,
       
         //flow meter detail
         "flowMMPerPulse": this.flowLPerPulse,

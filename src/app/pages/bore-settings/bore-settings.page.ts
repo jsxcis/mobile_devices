@@ -31,6 +31,8 @@ export class BoreSettingsPage implements OnInit {
   public deviceVersion: string;
   public deviceUID: string;
   public deviceStatus: boolean;
+  // context data
+  public displayContext:string; 
   //Bore Specific
   public boreCurrent: string;
   public boreFlowRate: string;
@@ -90,6 +92,8 @@ export class BoreSettingsPage implements OnInit {
    // console.log("Loading detail on enter");
       this.route.queryParams.subscribe(params => {
       this.deviceID = params["deviceID"];
+      // context data
+      this.displayContext = params["displayContext"];
     });
    console.log(this.deviceID);
     this.loadBoreDetail();
@@ -221,6 +225,7 @@ export class BoreSettingsPage implements OnInit {
         "deviceVersion":this.deviceVersion,
         "deviceUID":this.deviceUID,
         "deviceStatus":this.postSettings.deviceStatus,
+        "displayContext":this.displayContext,
 
         "boreCurrent":this.boreCurrent,
         "boreFlowRate":this.boreFlowRate,

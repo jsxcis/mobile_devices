@@ -27,6 +27,10 @@ export class TankSettingsPage implements OnInit {
   public deviceLAT: string;
   public deviceLONG: string;
   public deviceStatus: boolean;
+
+  // context data
+  public displayContext:string; 
+
   //Tanks
   public totalVolume: string;
   public availVolume: string;
@@ -76,8 +80,10 @@ export class TankSettingsPage implements OnInit {
    // console.log("Loading detail on enter");
       this.route.queryParams.subscribe(params => {
       this.deviceID = params["deviceID"];
+       // context data
+       this.displayContext = params["displayContext"];
     });
-   // console.log(this.deviceID);
+   console.log(this.displayContext);
     this.loadTankDetail();
   }
   loadTankDetail()
@@ -191,6 +197,7 @@ export class TankSettingsPage implements OnInit {
         "deviceType":this.deviceType,
         "loraID":this.loraID,
         "deviceStatus":this.postSettings.deviceStatus,
+        "displayContext":this.displayContext,
       
         //tanks
         "totalVolume": this.totalVolume,
