@@ -143,6 +143,19 @@ export class XcisService {
     //console.log('retrieveDevice:' + postData.req);
     return this.httpService.post('xcisdevicerest', postData);
   }
-
-
+  writeDeviceConfig(postData: any): Observable<any> 
+  {
+    //console.log('retrieveDevice:' + postData.req);
+    return this.httpService.post('xciswritedeviceconfigrest', postData);
+  }
+  activateDeviceConfig(postData: any): Observable<any> 
+  {
+    //console.log('retrieveDevice:' + postData.req);
+    return this.httpService.post('xcisactivatedeviceconfigrest', postData);
+  }
+  deactivateDeviceConfig(postData: any): Observable<any> 
+  {
+    //console.log('retrieveDevice:' + postData.req);
+    return this.httpService.post('xcisdeactivatedeviceconfigrest', postData);
+  }
 }

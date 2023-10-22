@@ -194,6 +194,39 @@ export class BoreSettingsPage implements OnInit {
         this.toastService.presentToast('Network connection error retrieving flow meter detail');
       }
       )
+      // Need to write some of the data to the sensor
+    this.xcisService.writeDeviceConfig(this.postSettings).subscribe((res:any) => {
+      },
+      (error: any) => {
+      // console.log("Network connection error retrieving flow meterdetail");
+      // console.log(error);
+        this.toastService.presentToast('Network connection error retrieving flow meter detail');
+      }
+      )
+
+      if (this.deviceStatus == true)
+      {
+        this.xcisService.activateDeviceConfig(this.postSettings).subscribe((res:any) => {
+        },
+        (error: any) => {
+        // console.log("Network connection error retrieving flow meterdetail");
+        // console.log(error);
+          this.toastService.presentToast('Network connection error retrieving flow meter detail');
+        }
+        )
+      }
+      else if (this.deviceStatus == false)
+      {
+        this.postSettings.deviceStatus = "Inactive";
+        this.xcisService.deactivateDeviceConfig(this.postSettings).subscribe((res:any) => {
+        },
+        (error: any) => {
+        // console.log("Network connection error retrieving flow meterdetail");
+        // console.log(error);
+          this.toastService.presentToast('Network connection error retrieving flow meter detail');
+        }
+        )
+      }
       //this.loadFlowMeterDetail();
       this.deviceDetail();
   }
