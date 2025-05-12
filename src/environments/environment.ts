@@ -12,8 +12,9 @@ export const environment = {
   //apiUrl: 'http://192.168.0.253/xcis-api/',
  //apiUrl: 'http://rosedale.dnsalias.com/xcis-api/',
   //apiUrl: 'http://10.141.109.47/xcis-api/',
-  //apiUrl: 'http://192.168.0.102/xcis-api/',
-  apiUrl: 'http://192.168.1.105/xcis-api/',
+  //apiUrl: 'http://192.168.1.107/xcis-api/',
+  //apiUrl: 'http://192.168.0.29/xcis-api/',
+  apiUrl: 'http://192.168.0.93/xcis-api/',
   xcis_version: '3.0',
   buildDate: new Date().toISOString()
 };
